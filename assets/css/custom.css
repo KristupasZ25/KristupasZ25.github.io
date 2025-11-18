@@ -1,3 +1,5 @@
+/* === MERGED BASE STYLES + UPDATED COMPONENTS === */
+
 /* === Typography === */
 body {
   font-family: "Inter", Arial, sans-serif;
@@ -12,41 +14,12 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
 }
 
-h1 {
-  font-size: 2.5rem;
-  color: #1a3d7c;
-  font-weight: 700;
-}
-
-h2 {
-  font-size: 2rem;
-  color: #224b94;
-  font-weight: 600;
-}
-
-h3 {
-  font-size: 1.7rem;
-  color: #2b5ab0;
-  font-weight: 600;
-}
-
-h4 {
-  font-size: 1.4rem;
-  color: #356ad1;
-  font-weight: 500;
-}
-
-h5 {
-  font-size: 1.2rem;
-  color: #3f7af3;
-  font-weight: 500;
-}
-
-h6 {
-  font-size: 1rem;
-  color: #4b8cff;
-  font-weight: 500;
-}
+h1 { font-size: 2.5rem; color: #1a3d7c; font-weight: 700; }
+h2 { font-size: 2rem;  color: #224b94; font-weight: 600; }
+h3 { font-size: 1.7rem; color: #2b5ab0; font-weight: 600; }
+h4 { font-size: 1.4rem; color: #356ad1; font-weight: 500; }
+h5 { font-size: 1.2rem; color: #3f7af3; font-weight: 500; }
+h6 { font-size: 1rem;  color: #4b8cff; font-weight: 500; }
 
 p {
   font-size: 1rem;
@@ -65,13 +38,8 @@ button, .btn {
   transition: 0.3s ease;
 }
 
-button:hover, .btn:hover {
-  background-color: #224b94;
-}
-
-button:active, .btn:active {
-  background-color: #152f5e;
-}
+button:hover, .btn:hover { background-color: #224b94; }
+button:active, .btn:active { background-color: #152f5e; }
 
 /* === Links === */
 a {
@@ -85,9 +53,7 @@ a:hover {
   text-decoration: underline;
 }
 
-a:active {
-  color: #152f5e;
-}
+a:active { color: #152f5e; }
 
 /* === Layout Improvements === */
 section {
@@ -95,7 +61,6 @@ section {
   padding: 1.5rem 0;
 }
 
-/* Content blocks visual improvements */
 .section-block {
   background: #fff;
   border: 1px solid #e0e0e0;
@@ -105,7 +70,6 @@ section {
   margin-bottom: 1.5rem;
 }
 
-/* Portfolio / Resume layouts */
 .portfolio-item, .resume-item {
   padding: 1.2rem;
   border-radius: 10px;
@@ -114,8 +78,139 @@ section {
   margin-bottom: 1.2rem;
 }
 
-/* Consistent spacing */
 .about-section *, .resume-section *, .portfolio-section * {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
+}
+
+
+/* === UPDATED COMPONENT 1: Navigation Bar (Restyled) === */
+.navbar {
+  background-color: #121212;
+  border-bottom: 3px solid #ff6600;
+  padding: 1rem 1.5rem;
+}
+
+.navbar a {
+  color: #ffffff;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  transition: 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.navbar a:hover {
+  background-color: #ff6600;
+  color: #000;
+}
+
+
+/* === UPDATED COMPONENT 2: Progress Bars (Restyled) === */
+.progress {
+  background-color: #1f1f1f;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 22px;
+  border: 2px solid #444;
+}
+
+.progress-bar {
+  background: linear-gradient(90deg, #ff6600, #ffbb33);
+  height: 100%;
+  transition: width 0.5s ease;
+}
+
+
+/* === COMPONENT 1: Navigation Bar (Restyled) === */
+.navbar {
+  background-color: #121212; /* darker background */
+  border-bottom: 3px solid #ff6600; /* bright accent line */
+  padding: 1rem 1.5rem;
+}
+
+.navbar a {
+  color: #ffffff;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  transition: 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.navbar a:hover {
+  background-color: #ff6600;
+  color: #000;
+}
+
+
+/* === COMPONENT 2: Progress Bars (Restyled) === */
+.progress {
+  background-color: #1f1f1f;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 22px;
+  border: 2px solid #444;
+}
+
+.progress-bar {
+  background: linear-gradient(90deg, #ff6600, #ffbb33);
+  height: 100%;
+  transition: width 0.5s ease;
+}
+
+
+/* === Global text fix if needed === */
+body {
+  color: #ffffff;
+  background-color: #000000;
+}
+/* === TESTIMONIALS: White text on black background === */
+.testimonials-section {
+  background-color: #000;
+  color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.testimonials-section p,
+.testimonials-section h2,
+.testimonials-section h3 {
+  color: #fff !important;
+}
+
+.testimonial-item {
+  background-color: #111;
+  border: 1px solid #333;
+  padding: 1.5rem;
+  border-radius: 10px;
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+}
+
+/* === Stronger override for testimonials text === */
+.testimonials-section, 
+.testimonials-section *,
+.testimonial-item *,
+.testimonial-item p,
+.testimonial-item h2,
+.testimonial-item h3,
+.testimonial-item span {
+  color: #fff !important;
+}
+
+/* Ensure backgrounds stay dark */
+.testimonial-item {
+  background-color: #111 !important;
+}
+
+
+/* Force white text for About Me or similar paragraphs */
+.about-section p,
+.about-section *,
+#about p,
+#about *,
+.bio-text,
+.bio-text * {
+  color: #fff !important;
 }
