@@ -204,7 +204,6 @@ body {
   background-color: #111 !important;
 }
 
-
 /* Force white text for About Me or similar paragraphs */
 .about-section p,
 .about-section *,
@@ -212,5 +211,22 @@ body {
 #about *,
 .bio-text,
 .bio-text * {
+  color: #fff !important;
+}
+
+
+/* === STRONG OVERRIDE: About text forced to white === */
+.about-section, 
+.about-section *,
+#about, 
+#about *,
+.about, 
+.about *,
+.bio, 
+.bio *,
+.bio-text, 
+.bio-text *,
+.profile-section *,
+.profile-section {
   color: #fff !important;
 }
