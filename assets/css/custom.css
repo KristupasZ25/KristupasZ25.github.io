@@ -1,0 +1,300 @@
+/*--------------------------------------------------------------
+# Custom Typography Styles
+--------------------------------------------------------------*/
+
+/* a. Šriftų šeimų pakeitimas */
+:root {
+  --default-font: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --heading-font: "Poppins", "Montserrat", sans-serif;
+  --nav-font: "Inter", "SF Pro Display", sans-serif;
+}
+
+body {
+  font-family: var(--default-font);
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+}
+
+/* b. Antraščių stilių pakeitimas */
+/* H1 stilius */
+h1 {
+  font-family: var(--heading-font);
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #f8f9fa;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* H2 stilius */
+h2 {
+  font-family: var(--heading-font);
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #e9ecef;
+  letter-spacing: -0.015em;
+  margin-bottom: 1.25rem;
+  position: relative;
+}
+
+h2::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-color), transparent);
+  border-radius: 2px;
+}
+
+/* H3 stilius */
+h3 {
+  font-family: var(--heading-font);
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #dee2e6;
+  letter-spacing: -0.01em;
+  margin-bottom: 1rem;
+}
+
+/* H4 stilius */
+h4 {
+  font-family: var(--heading-font);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #ced4da;
+  letter-spacing: 0;
+  margin-bottom: 0.875rem;
+}
+
+/* H5 stilius */
+h5 {
+  font-family: var(--heading-font);
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #adb5bd;
+  letter-spacing: 0.01em;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+}
+
+/* H6 stilius */
+h6 {
+  font-family: var(--heading-font);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #6c757d;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.625rem;
+  text-transform: uppercase;
+  font-style: italic;
+}
+
+/* Pastraipų stilius */
+p {
+  font-family: var(--default-font);
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--default-color), transparent 15%);
+  letter-spacing: -0.005em;
+  margin-bottom: 1.5rem;
+}
+
+.lead {
+  font-size: 1.25rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--default-color);
+  letter-spacing: -0.008em;
+}
+
+/* Specialūs antraščių efektai sekcijoms */
+.section-title h2 {
+  font-size: 2.75rem;
+  font-weight: 800;
+  color: var(--heading-color);
+  text-align: center;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.section-title h2::before,
+.section-title h2::after {
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--accent-color), color-mix(in srgb, var(--accent-color), transparent 70%));
+}
+
+.hero .hero-text h1 {
+  font-size: 4rem;
+  font-weight: 900;
+  line-height: 1;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.hero .hero-text h1 .accent-text {
+  background: linear-gradient(135deg, var(--accent-color), #ffffff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+}
+
+.hero .hero-text h2 {
+  font-size: 2rem;
+  font-weight: 300;
+  color: color-mix(in srgb, var(--heading-color), transparent 20%);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* Navigacijos šriftai */
+.navmenu a {
+  font-family: var(--nav-font);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+/* Mygtukų ir nuorodų šriftai */
+.btn {
+  font-family: var(--heading-font);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+a {
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* Kortelių ir sekcijų antraštės */
+.about .profile-content h3 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.services .service-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f8f9fa;
+  letter-spacing: -0.008em;
+}
+
+.portfolio .portfolio-info h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #e9ecef;
+  letter-spacing: -0.005em;
+}
+
+/* Responsive tipografija */
+@media (max-width: 1200px) {
+  h1 {
+    font-size: 3rem;
+  }
+  
+  h2 {
+    font-size: 2.25rem;
+  }
+  
+  .hero .hero-text h1 {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  h3 {
+    font-size: 1.75rem;
+  }
+  
+  p {
+    font-size: 1rem;
+  }
+  
+  .hero .hero-text h1 {
+    font-size: 2.75rem;
+  }
+  
+  .hero .hero-text h2 {
+    font-size: 1.5rem;
+  }
+  
+  .section-title h2 {
+    font-size: 2.25rem;
+  }
+}
+
+@media (max-width: 576px) {
+  h1 {
+    font-size: 2rem;
+    letter-spacing: -0.015em;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+  }
+  
+  .hero .hero-text h1 {
+    font-size: 2.25rem;
+  }
+  
+  .section-title h2 {
+    font-size: 1.875rem;
+  }
+}
+
+/* Specialūs efektai */
+.hero .hero-text .lead span {
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  border-bottom: 3px solid var(--accent-color);
+  padding-bottom: 4px;
+}
+
+.about .stats-grid .stat-item .stat-number {
+  font-family: var(--heading-font);
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--accent-color);
+  letter-spacing: -0.02em;
+}
+
+.testimonials .client-details h3 {
+  font-family: var(--heading-font);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0;
+}
+
+/* Kodų ir techninių tekstų šriftai */
+code, pre {
+  font-family: "Fira Code", "Consolas", "Monaco", monospace;
+  font-size: 0.875rem;
+  letter-spacing: -0.005em;
+}
