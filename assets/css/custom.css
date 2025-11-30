@@ -2097,3 +2097,908 @@ body {
 color: #fff !important;
 }
 }
+
+/* ===== CUSTOM CSS ANIMATIONS ===== */
+
+/* 1. Fade-in Section Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 2. Social Media Icons Hover Animation */
+@keyframes socialBounce {
+    0%, 20%, 60%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    80% {
+        transform: translateY(-5px);
+    }
+}
+
+/* 3. Profile Image Floating Animation */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* 4. Skill Bars Loading Animation */
+@keyframes skillLoad {
+    from {
+        width: 0%;
+    }
+    to {
+        width: var(--skill-level);
+    }
+}
+
+/* 5. Button Pulse Animation */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(52, 152, 219, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(52, 152, 219, 0);
+    }
+}
+
+/* 6. Portfolio Item Hover Animation */
+@keyframes portfolioZoom {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.05);
+    }
+}
+
+/* 7. Typewriter Cursor Animation */
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+/* 8. Stats Counter Animation */
+@keyframes countUp {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* 9. Navigation Menu Item Animation */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* 10. Service Cards Hover Animation */
+@keyframes serviceCardHover {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-5px) rotate(1deg);
+    }
+    100% {
+        transform: translateY(-3px) rotate(0deg);
+    }
+}
+
+/* ===== PREFERS-REDUCED-MOTION MEDIA QUERY ===== */
+@media (prefers-reduced-motion: no-preference) {
+    /* Animacijos įjungtos tik kai vartotojas nemato judesio jautrumo */
+    
+    /* Sekcijų animacijos */
+    section {
+        animation: fadeInUp 0.8s ease-out;
+    }
+
+    /* Profile image animacija hero sekcijoje */
+    .profile-image {
+        animation: float 3s ease-in-out infinite;
+    }
+
+    /* Skill bar animacija */
+    .progress-bar {
+        animation: skillLoad 1.5s ease-out forwards;
+    }
+
+    /* CTA mygtukų animacija */
+    .btn-primary {
+        animation: pulse 2s infinite;
+    }
+
+    /* Typewriter cursor */
+    .typed::after {
+        content: '|';
+        animation: blink 1s infinite;
+    }
+
+    /* Stats counter animation */
+    .stats-item .purecounter {
+        animation: countUp 1s ease-out;
+    }
+
+    /* Navigation menu animations */
+    .navmenu ul li {
+        animation: slideIn 0.5s ease-out forwards;
+        opacity: 0;
+    }
+
+    /* Stagger animation for nav items */
+    .navmenu ul li:nth-child(1) { animation-delay: 0.1s; }
+    .navmenu ul li:nth-child(2) { animation-delay: 0.2s; }
+    .navmenu ul li:nth-child(3) { animation-delay: 0.3s; }
+    .navmenu ul li:nth-child(4) { animation-delay: 0.4s; }
+    .navmenu ul li:nth-child(5) { animation-delay: 0.5s; }
+    .navmenu ul li:nth-child(6) { animation-delay: 0.6s; }
+}
+
+/* HOVER ANIMACIJOS - veikia tik kai nėra judesio jautrumo */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .social-links a:hover {
+        animation: socialBounce 0.6s ease;
+        color: #3498db !important;
+    }
+
+    .portfolio-wrap:hover {
+        animation: portfolioZoom 0.3s ease forwards;
+    }
+
+    .service-item:hover {
+        animation: serviceCardHover 0.5s ease forwards;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+}
+
+/* ===== REDUCED MOTION STYLES ===== */
+@media (prefers-reduced-motion: reduce) {
+    /* Išjungiamos visos animacijos */
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    /* Supaprastintos animacijos - tik opacity pokyčiai */
+    section {
+        animation: none;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .profile-image {
+        animation: none;
+        transform: none !important;
+    }
+
+    .progress-bar {
+        animation: none;
+    }
+
+    .btn-primary {
+        animation: none;
+    }
+
+    .typed::after {
+        animation: none;
+        content: '';
+    }
+
+    .stats-item .purecounter {
+        animation: none;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .navmenu ul li {
+        animation: none;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    /* Hover efektai be animacijų */
+    .social-links a:hover {
+        animation: none;
+        transform: none;
+        color: #3498db !important;
+    }
+
+    .portfolio-wrap:hover {
+        animation: none;
+        transform: scale(1.02); /* Labai subtilus efektas */
+    }
+
+    .service-item:hover {
+        animation: none;
+        transform: translateY(-2px); /* Minimalus efektas */
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+}
+
+/* ===== PAGE PRELOADER ===== */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.preloader-content {
+    text-align: center;
+    color: white;
+}
+
+.preloader-logo {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.preloader-logo .accent-text {
+    color: #ffd700;
+}
+
+.preloader-text {
+    font-size: 1.2rem;
+    margin: 20px 0 30px 0;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Spinning Circle Loader */
+.preloader-spinner {
+    width: 80px;
+    height: 80px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-top: 5px solid #ffd700;
+    border-radius: 50%;
+    animation: preloader-spin 1.2s linear infinite;
+    margin: 0 auto 20px auto;
+}
+
+/* Preloader Animations */
+@keyframes preloader-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Preloader reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .preloader-spinner {
+        animation: none;
+        border: 5px solid rgba(255, 255, 255, 0.3);
+        /* Rodyti tik statinį loaderį */
+    }
+    
+    /* Greitesnis preloaderio pašalinimas reduced motion atveju */
+    #preloader {
+        transition: opacity 0.3s ease;
+    }
+}
+
+/* Preloader Responsive */
+@media (max-width: 768px) {
+    .preloader-logo {
+        font-size: 2rem;
+    }
+    
+    .preloader-spinner {
+        width: 60px;
+        height: 60px;
+        border-width: 4px;
+    }
+    
+    .preloader-text {
+        font-size: 1rem;
+    }
+}
+
+/* ===== LOADER ANIMATIONS DEMO ===== */
+.loader-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    margin: 30px 0;
+    backdrop-filter: blur(10px);
+}
+
+/* Spinning Circle Loader */
+.spinner-loader {
+    width: 60px;
+    height: 60px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Pulsing Dots Loader */
+@keyframes pulseDots {
+    0%, 80%, 100% {
+        transform: scale(0);
+        opacity: 0.5;
+    }
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.dots-loader .dot {
+    width: 12px;
+    height: 12px;
+    background: #3498db;
+    border-radius: 50%;
+    animation: pulseDots 1.4s infinite ease-in-out both;
+}
+
+/* Reduced motion for loader demos */
+@media (prefers-reduced-motion: reduce) {
+    .spinner-loader {
+        animation: none;
+        opacity: 0.7;
+    }
+    
+    .dots-loader .dot {
+        animation: none;
+        opacity: 0.5;
+    }
+}
+
+/* Responsive animations */
+@media (max-width: 768px) {
+    @media (prefers-reduced-motion: no-preference) {
+        .profile-image {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        section {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    }
+}
+
+/* Basic transitions that are safe for reduced motion */
+.social-links a,
+.portfolio-wrap,
+.service-item {
+    transition: all 0.3s ease;
+}
+
+/* Safe hover effects for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .social-links a,
+    .portfolio-wrap,
+    .service-item {
+        transition: opacity 0.3s ease, color 0.3s ease;
+    }
+}
+
+/* ===== PAGE PRELOADER ===== */
+#page-preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+#page-preloader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.preloader-content {
+    text-align: center;
+    color: white;
+}
+
+.preloader-logo {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.preloader-logo .accent-text {
+    color: #ffd700;
+}
+
+.preloader-text {
+    font-size: 1.2rem;
+    margin: 20px 0 30px 0;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.loading-progress {
+    margin-top: 20px;
+}
+
+/* Spinning Circle Loader for Preloader */
+.spinner-loader {
+    width: 80px;
+    height: 80px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-top: 5px solid #ffd700;
+    border-radius: 50%;
+    animation: spin 1.2s linear infinite;
+    margin: 0 auto 20px auto;
+}
+
+/* Progress Bar for Preloader */
+.progress-loader {
+    width: 300px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-loader .progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #ffd700, #ffed4e);
+    border-radius: 4px;
+    animation: progress 2.5s ease-in-out infinite;
+}
+
+/* Preloader Animations */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes progress {
+    0% {
+        width: 0%;
+    }
+    50% {
+        width: 70%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+/* ===== CUSTOM PRELOADER STYLES ===== */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.preloader-content {
+    text-align: center;
+    color: white;
+}
+
+.preloader-logo {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.preloader-logo .accent-text {
+    color: #ffd700;
+}
+
+.preloader-text {
+    font-size: 1.2rem;
+    margin: 20px 0 30px 0;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Spinning Circle Loader */
+.preloader-spinner {
+    width: 80px;
+    height: 80px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-top: 5px solid #ffd700;
+    border-radius: 50%;
+    animation: preloader-spin 1.2s linear infinite;
+    margin: 0 auto 20px auto;
+}
+
+/* Preloader Animations */
+@keyframes preloader-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Preloader Responsive */
+@media (max-width: 768px) {
+    .preloader-logo {
+        font-size: 2rem;
+    }
+    
+    .preloader-spinner {
+        width: 60px;
+        height: 60px;
+        border-width: 4px;
+    }
+    
+    .preloader-text {
+        font-size: 1rem;
+    }
+  }
+
+/* ===== ANIMUOTAS GRADIENTAS SU PSEUDOELEMENTU ===== */
+#services {
+    position: relative !important;
+    overflow: hidden !important;
+    background: transparent !important;
+}
+
+#services::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    z-index: 0;
+      animation: gradientAnimation 15s ease infinite, 
+               pulseEffect 4s ease-in-out infinite;
+}
+
+@keyframes pulseEffect {
+    0%, 100% {
+        opacity: 0.9;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Content stilius - PRIVALOMA, kad tekstas būtų viršuje */
+#services .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== SERVICE KORTELĖS SU TINKAMOMIS SPALVOMIS ===== */
+#services .service-item {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-radius: 15px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+    padding: 30px 20px !important;
+    border: none !important;
+    color: #333 !important;
+}
+
+#services .service-item h4 {
+    color: #2c3e50 !important;
+    font-weight: 600 !important;
+}
+
+#services .service-item p {
+    color: #5d6d7e !important;
+    line-height: 1.6 !important;
+}
+
+#services .service-item.featured {
+    background: rgba(255, 255, 255, 0.98) !important;
+    border: 2px solid #3498db !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25) !important;
+}
+
+#services .service-item:hover {
+    background: white !important;
+    transform: translateY(-8px) !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Lentelės stilius */
+#services .services-table-container {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-radius: 15px !important;
+    padding: 30px !important;
+    margin-top: 40px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+}
+
+#services .services-table-container h3 {
+    color: #2c3e50 !important;
+    text-align: center !important;
+}
+
+#services .services-table th {
+    background: #3498db !important;
+    color: white !important;
+}
+
+/* Media section stilius */
+#services .media-box {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-radius: 15px !important;
+    padding: 30px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Section title stilius */
+#services .section-title h2 {
+    color: white !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    #services::before {
+        animation: none !important;
+        background: #3498db !important;
+    }
+}
+
+/* ===== ANIMUOTOS CSS FIGŪROS ABOUT SEKCIJOJE ===== */
+#about {
+    position: relative;
+    overflow: visible;
+    min-height: 700px;
+}
+
+.animated-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.shape {
+    position: absolute;
+    opacity: 0.4;
+    animation: simpleRotate 6s linear infinite;
+}
+
+@keyframes simpleRotate {
+    0% { 
+        transform: rotate(0deg) scale(1); 
+    }
+    100% { 
+        transform: rotate(360deg) scale(1); 
+    }
+}
+
+/* Trikampis */
+.triangle { 
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 52px solid #3498db;
+    animation: simpleRotate 8s linear infinite, float 6s ease-in-out infinite;
+}
+
+/* Apskritimas */
+.circle { 
+    width: 50px;
+    height: 50px;
+    background: #e74c3c;
+    border-radius: 50%; 
+    animation: simpleRotate 10s linear infinite, pulse 4s ease-in-out infinite;
+}
+
+/* Kvadratas */
+.square { 
+    width: 45px;
+    height: 45px;
+    background: #9b59b6;
+    animation: simpleRotate 7s linear infinite, bounce 5s ease-in-out infinite;
+}
+
+/* Elipsė */
+.ellipse { 
+    width: 70px;
+    height: 35px;
+    background: #f39c12;
+    border-radius: 50%; 
+    animation: simpleRotate 12s linear infinite, morph 3s ease-in-out infinite;
+}
+
+/* Penkiakampis */
+.pentagon { 
+    width: 50px;
+    height: 50px;
+    background: #2ecc71;
+    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+    animation: simpleRotate 9s linear infinite, float 7s ease-in-out infinite;
+}
+
+/* Žvaigždė */
+.star { 
+    width: 55px;
+    height: 55px;
+    background: #ff6b6b;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    animation: simpleRotate 15s linear infinite, twinkle 2s ease-in-out infinite;
+}
+
+/* NAUJOS POZICIJOS - APAČIOJE PO KONTAKTO INFORMACIJA */
+/* FIGŪROS KAIREJE PUSĖJE, VIENA PO KITO */
+.shape:nth-child(1) { bottom: 950px; left: 15%; }    /* Trikampis */
+.shape:nth-child(2) { bottom: 800px; left: 15%; }    /* Apskritimas */
+.shape:nth-child(3) { bottom: 650px; left: 15%; }    /* Kvadratas */
+.shape:nth-child(4) { bottom: 500px; left: 15%; }    /* Elipsė */
+.shape:nth-child(5) { bottom: 350px; left: 15%; }     /* Penkiakampis */
+.shape:nth-child(6) { bottom: 200px; left: 15%; }      /* Žvaigždė */
+
+/* Papildomos animacijos */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes morph {
+    0%, 100% {
+        transform: scaleX(1) scaleY(1);
+    }
+    50% {
+        transform: scaleX(1.3) scaleY(0.8);
+    }
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.1);
+    }
+}
+
+#about .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Responsive - mobile */
+@media (max-width: 768px) {
+    .shape {
+        transform: scale(0.6);
+    }
+    
+    /* Mobile pozicijos */
+    .shape:nth-child(1) { bottom: 8%; left: 5%; }
+    .shape:nth-child(2) { bottom: 12%; left: 20%; }
+    .shape:nth-child(3) { bottom: 6%; left: 40%; }
+    .shape:nth-child(4) { bottom: 10%; left: 60%; }
+    .shape:nth-child(5) { bottom: 4%; left: 75%; }
+    .shape:nth-child(6) { bottom: 15%; left: 85%; }
+    
+    .triangle { 
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-bottom: 35px solid #3498db;
+    }
+    .circle { width: 35px; height: 35px; }
+    .square { width: 30px; height: 30px; }
+    .ellipse { width: 50px; height: 25px; }
+    .pentagon { width: 35px; height: 35px; }
+    .star { width: 40px; height: 40px; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .shape {
+        animation: none !important;
+    }
+}
