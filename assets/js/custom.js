@@ -208,3 +208,133 @@ function showSuccessPopup(message) {
     setTimeout(() => popup.remove(), 300);
   }, 3000);
 }
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const board = document.getElementById("game-board");
+  const movesCounter = document.getElementById("moves");
+  const matchCounter = document.getElementById("matches");
+  const winMessage = document.getElementById("win-message");
+  const startBtn = document.getElementById("start-btn");
+  const resetBtn = document.getElementById("reset-btn");
+  const difficultySelect = document.getElementById("difficulty");
+
+  // Pakankamai didelis emoji masyvas — kad užtektų net sunkesniam lygiui
+  const emojiSet = ['🐶','🐱','🐭','🐹','🐰','🦊','🐻','🐼','🦁','🐯','🐨','🐮','🐸','🐷','🦄','🐔','🐤','🐙','🦋','🐞','🐌','🐝','🐟','🦀','🐠','🦖','🐲'];
+
+  let totalPairs = 6;
+  let moves = 0;
+  let matches = 0;
+  let flippedCards = [];
+  let lockBoard = false;
+
+  function shuffle(array) {
+    const arr = array.slice();
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
+  function createBoard() {
+    board.innerHTML = "";
+    moves = 0;
+    matches = 0;
+    flippedCards = [];
+    lockBoard = false;
+    updateStats();
+    winMessage.style.display = "none";
+
+    if (emojiSet.length < totalPairs) {
+      console.error("Per mažai unikalių emoji: reikia:", totalPairs, "turime:", emojiSet.length);
+      return;
+    }
+
+    const selected = shuffle(emojiSet).slice(0, totalPairs);
+    const pairArray = shuffle([...selected, ...selected]);
+
+console.log("Pasirinktos poros:", selected);
+console.log("Galutinis kortelių masyvas:", pairArray);
+console.log("Kortelių skaičius:", pairArray.length);
+
+
+    // Patikrinam — porų masyvas turi būti lygus totalPairs*2
+    if (pairArray.length !== totalPairs * 2) {
+      console.error("Neteisingas porų masyvo ilgis:", pairArray.length, "vietoj", totalPairs * 2);
+      return;
+    }
+
+    const cols = Math.min(pairArray.length / 2, 6);
+    board.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+
+    pairArray.forEach((symbol, idx) => {
+      const card = document.createElement("div");
+      card.classList.add("card");
+      card.dataset.value = symbol;
+      card.dataset.index = idx;   // unikalus ID
+      card.textContent = "";
+      card.addEventListener("click", () => flipCard(card));
+      board.appendChild(card);
+    });
+  }
+
+  function flipCard(card) {
+    if (lockBoard) return;
+    if (card.classList.contains("flipped") || card.classList.contains("matched")) return;
+
+    card.classList.add("flipped");
+    card.textContent = card.dataset.value;
+    flippedCards.push(card);
+
+    if (flippedCards.length === 2) {
+      lockBoard = true;
+      moves++;
+      updateStats();
+
+      const [c1, c2] = flippedCards;
+      const same = c1.dataset.value === c2.dataset.value;
+      const diffIndex = c1.dataset.index !== c2.dataset.index;
+
+      if (same && diffIndex) {
+        // sutapo
+        c1.classList.add("matched");
+        c2.classList.add("matched");
+        flippedCards = [];
+        matches++;
+        lockBoard = false;
+        updateStats();
+
+        if (matches === totalPairs) {
+          winMessage.style.display = "block";
+        }
+      } else {
+        // neatitiko — verčiam atgal
+        setTimeout(() => {
+          c1.classList.remove("flipped");
+          c2.classList.remove("flipped");
+          c1.textContent = "";
+          c2.textContent = "";
+          flippedCards = [];
+          lockBoard = false;
+        }, 1000);
+      }
+    }
+  }
+
+  function updateStats() {
+    movesCounter.textContent = moves;
+    matchCounter.textContent = matches;
+  }
+
+  startBtn.addEventListener("click", () => {
+    const lvl = difficultySelect.value;
+    if (lvl === "easy") totalPairs = 6;
+    else if (lvl === "hard") totalPairs = 12;
+    else totalPairs = 6;
+
+    createBoard();
+  });
+
+  resetBtn.addEventListener("click", createBoard);
+});

@@ -3077,3 +3077,65 @@ color: #fff !important;
   opacity: 1;
   transform: translateY(0);
 }
+
+
+/* --- Memory game stiliai --- */
+#memory-game {
+  margin-left: auto;
+  margin-right: 0;
+  max-width: 1200px;
+}
+
+
+#memory-game .game-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.game-board {
+  display: grid;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.card {
+  width: 80px;
+  height: 80px;
+  background-color: var(--surface-color);
+  color: var(--contrast-color);
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s, color 0.3s;
+  user-select: none;
+}
+.card.flipped,
+.card.matched {
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+}
+.card.matched {
+  background-color: #28a745; /* Žalia spalva */
+  color: #fff;               /* Baltas tekstas */
+  opacity: 1;
+  pointer-events: none;
+}
+
+
+.card.disabled {
+  pointer-events: none;
+}
+
+@media (max-width: 576px) {
+  .card {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+}

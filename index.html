@@ -1013,6 +1013,32 @@
 
   </main>
 
+  <section id="memory-game" class="container mt-5">
+  <h2>🧠 Mano Žaidimas</h2>
+
+  <div class="game-controls mb-3">
+    <label for="difficulty">Pasirinkite lygį:</label>
+    <select id="difficulty" class="form-select d-inline-block w-auto mx-2">
+      <option value="easy">Lengvas (6 poros)</option>
+      <option value="hard">Sunkus (12 porų)</option>
+    </select>
+    <button id="start-btn" class="btn btn-success">Pradėti</button>
+    <button id="reset-btn" class="btn btn-warning">Atnaujinti</button>
+  </div>
+
+  <div class="stats mb-3">
+    <span><strong>Žingsnių skaičius:</strong> <span id="moves">0</span></span> &nbsp;&nbsp;
+    <span><strong>Rastų porų:</strong> <span id="matches">0</span></span>
+  </div>
+
+  <div id="game-board" class="game-board"></div>
+
+  <div id="win-message" class="alert alert-success mt-3" style="display: none;">
+    🎉 <strong>Laimėjote!</strong> Visos poros atspėtos!
+  </div>
+</section>
+
+
   <footer id="footer" class="footer position-relative">
 
     <div class="container">
@@ -1061,3 +1087,4 @@
 </body>
 
 </html>
+
