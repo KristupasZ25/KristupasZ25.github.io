@@ -138,16 +138,18 @@ document.addEventListener("DOMContentLoaded", function () {
     resultDiv.style.display = "none";
     form.appendChild(resultDiv);
 
-    function updateSubmitButtonState() {
-      const inputs = form.querySelectorAll("input[type!='range']");
-      let allValid = true;
-      inputs.forEach(input => {
-        if (input.classList.contains("is-invalid") || input.value.trim() === "") {
-          allValid = false;
-        }
-      });
-      submitBtn.disabled = !allValid;
+function updateSubmitButtonState() {
+  const inputs = form.querySelectorAll("input[type='text'], input[type='email'], input[type='tel']");
+  let allValid = true;
+  inputs.forEach((input) => {
+    // jeigu input turi klaidą (is-invalid), arba tuščias → invalid
+    if (input.classList.contains("is-invalid") || input.value.trim() === "") {
+      allValid = false;
     }
+  });
+  submitBtn.disabled = !allValid;
+}
+
 
     form.addEventListener("submit", e => {
       e.preventDefault();
